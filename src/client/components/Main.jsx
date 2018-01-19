@@ -16,9 +16,14 @@ class Main extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>Value: {this.props.number}</h1>
-        <button onClick={this.newRandom}>Generate new random value</button>
+      <div className="w3-container">
+        <div className="w3-row-padding">
+          <h1>Value: {this.props.number}</h1>
+          <button onClick={this.newRandom}>Generate new random value</button>
+        </div>
+        <div className="w3-row-padding">
+          <img src="/img/wee.gif" alt="wee" />
+        </div>
       </div>
     );
   }

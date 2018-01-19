@@ -5,6 +5,7 @@ export default class Default extends React.Component {
     return (
       <html>
         <head>
+          <title>Happy ETH</title>
           <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
         </head>
         <body>

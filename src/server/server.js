@@ -15,6 +15,7 @@ app.get('/', function (req, res) {
 });
 
 app.use(serveStatic(path.join(__dirname, '../../build')));
+app.use(serveStatic(path.join(__dirname, '../../static')));
 
 app.listen(3000, function () {
   console.log(__dirname)
