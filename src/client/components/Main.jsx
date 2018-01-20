@@ -1,41 +1,43 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { newRandom } from '../redux/actions/TestActions.js';
+import Image from './WeeImage/Image.jsx';
+import Holder from './Values/Holder.jsx';
+import Timer from './Timer/Timer.jsx';
 
 class Main extends React.Component {
-
-  constructor(props) {
-    super(props);
-    this.newRandom = this.newRandom.bind(this);
-  }
-
-  newRandom() {
-    this.props.dispatch(newRandom());
-  }
 
   render() {
     return (
       <div className="w3-container">
+        <Timer />
         <div className="w3-row-padding">
-          <h1>Value: {this.props.number}</h1>
-          <button onClick={this.newRandom}>Generate new random value</button>
+          <b>Happy ETH</b>
         </div>
-        <div className="w3-row-padding">
-          <img src="/img/wee.gif" alt="wee" />
+        <div className="w3-half">
+          <Image />
+        </div>
+        <div className="w3-half">
+          <Holder values={this.props.values} />
         </div>
       </div>
     );
   }
 }
 
+Main.defaultProps = {
+  values: [],
+};
+
 Main.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-  number: PropTypes.string,
+  values: PropTypes.array,
 };
 
 function mapStateToProps(state) {
-  return { number: state.testReducer.number.toString() };
+  const values = Object.keys(state.values).map(currency =>
+    ({ currency, value: state.values[currency] }),
+  );
+  return { values };
 }
 
 export default connect(mapStateToProps)(Main);
